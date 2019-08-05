@@ -1,0 +1,26 @@
+@import "vars";
+
+:host {
+  padding: $elem-margin;
+  position: absolute;
+  top: calc(#{getSize(header-height)} + 2 * #{$elem-margin});
+  left: calc(#{getSize(searcher-width)} + #{getSize(details-width)} + 4 * #{$elem-margin});
+  width: calc(100% - #{getSize(searcher-width)} - #{getSize(details-width)} - 6 * #{$elem-margin});
+  height: calc(100% - #{getSize(header-height)} - 4 * #{$elem-margin});
+
+  @include unscrollableScreenHeight {
+    height: calc(#{$min-screen-height} - #{$header_height} - 4 * #{$elem-margin});
+  }
+
+  @include unscrollableScreenWidth {
+    left: calc(#{$min-screen-width} * .5 + 4 * #{$elem-margin});
+    width: calc(#{$min-screen-width} * .5 - 6 * #{$elem-margin});
+  }
+}
+
+#calender-container {
+  background: getColor(elem-background);
+  height: 100%;
+  width: 100%;
+  border-radius: $elem-border-radius;
+}

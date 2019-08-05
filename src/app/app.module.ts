@@ -4,12 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './home/header/header.component';
+import { SearcherComponent } from './home/searcher/searcher.component';
+import { ResultItemComponent } from './home/searcher/result-item/result-item.component';
+import { DetailsComponent } from './home/details/details.component';
+import { CalenderComponent } from './home/calender/calender.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    SearcherComponent,
+    ResultItemComponent,
+    DetailsComponent,
+    CalenderComponent
   ],
   imports: [
     BrowserModule,

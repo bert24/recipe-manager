@@ -1,0 +1,19 @@
+@import "vars";
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background: getColor(background);
+
+  @include unscrollableScreenWidth {
+    width: $min-screen-width;
+  }
+
+  @include unscrollableScreenHeight {
+    height: $min-screen-height;
+  }
+}

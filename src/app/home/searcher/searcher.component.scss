@@ -1,0 +1,140 @@
+@import "vars";
+
+:host {
+  padding: $elem-margin;
+  position: absolute;
+  top: calc(#{getSize(header-height)} + 2 * #{$elem-margin});
+  left: 0;
+  width: getSize(searcher-width);
+  height: calc(100% - #{getSize(header-height)} - 4 * #{$elem-margin});
+
+  @include unscrollableScreenWidth {
+    width: calc(#{$min-screen-width} * .2);
+  }
+
+  @include unscrollableScreenHeight {
+    height: calc(#{$min-screen-height} - #{$header_height} - 4 * #{$elem-margin});
+  }
+}
+
+#search-container {
+  background: getColor(elem-background);
+  height: 100%;
+  border-radius: $elem-border-radius;
+  text-align: left;
+
+  .search {
+    align-items: center;
+    transition: all .3s;
+    text-align: center;
+
+    .search-field {
+      border: none;
+      border-radius: $elem-border-radius;
+      margin: $elem-margin;
+      font-size: 1.0rem;
+      width: calc(100% - 2 * #{$elem-margin} - 1rem);
+      height: 2rem;
+      padding: 0 .5rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .search-button {
+      height: 2rem;
+      width: calc(100% - 2 * #{$elem-margin});
+      border: none;
+      border-radius: $elem-border-radius;
+      background: getColor(search-button-background);
+      margin: 0;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: getColor(search-button-background-hover);
+      }
+
+      &:active {
+        background: getColor(search-button-background-active);
+      }
+
+      i {
+        font-size: 1rem;
+        color: getColor(light-button-color);
+      }
+
+      span {
+        font-size: 1rem;
+        color: getColor(light-button-color);
+      }
+    }
+  }
+}
+
+.result-container {
+
+  background-color: getColor(elem-background-light);
+
+  .results-list {
+    padding: 0;
+    margin: .5rem 0;
+  }
+}
+
+.pages-nav-container {
+  position: absolute;
+  bottom: calc(#{$elem-border-radius} + 1rem);
+  left: 0;
+  padding: 0 1rem;
+  width: calc(100% - 2rem);
+
+  .btn-inline {
+    color: getColor(font-orange);
+    background-color: getColor(light-button-color);
+    border: none;
+    padding: .3rem .5rem;
+    border-radius: $elem-border-radius;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all .2s;
+
+    span {
+      margin: 0 .4rem;
+      font-size: .8rem;
+
+      i {
+        font-size: .8rem;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      color: getColor(font-orange-dark);
+      background-color: getColor(light-button-color);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .pages-nav-btn-prev {
+    float: left;
+    flex-direction: row-reverse;
+  }
+
+  .pages-nav-btn-next {
+    float: right;
+  }
+}

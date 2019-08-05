@@ -1,0 +1,33 @@
+<div id="search-container">
+  <div class="search">
+    <div class="row">
+      <input type="text" class="search-field" maxlength="30" placeholder="Search for recipes...">
+    </div>
+    <div class="row">
+      <button class="search-button">
+        <i class="fas fa-search"></i>
+        <span>Search</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="result-container">
+    <ul class="results-list">
+      <app-result-item></app-result-item>
+      <app-result-item></app-result-item>
+      <app-result-item></app-result-item>
+      <app-result-item></app-result-item>
+      <app-result-item></app-result-item>
+      <app-result-item></app-result-item>
+    </ul>
+
+    <div class="pages-nav-container">
+      <button class="btn-inline pages-nav-btn-prev">
+        <span><i class="fas fa-caret-left"></i> Page 1</span>
+      </button>
+      <button class="btn-inline pages-nav-btn-next">
+        <span>Page 3 <i class="fas fa-caret-right"></i></span>
+      </button>
+    </div>
+  </div>
+</div>

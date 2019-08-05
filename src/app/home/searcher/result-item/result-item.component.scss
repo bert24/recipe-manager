@@ -1,0 +1,49 @@
+@import "vars";
+
+.results-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  transition: all .3s;
+  text-decoration: none;
+
+  &:hover {
+    background-color: getColor(search-item-hoover);
+    transform: translateY(-2px);
+  }
+
+  .results-fig {
+    flex: 0 0 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 2rem;
+    margin: 0 .5rem 0 0;
+    position: relative;
+    backface-visibility: hidden;
+
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: all .3s;
+    }
+  }
+}
+
+.results-data {
+  .results-name {
+    font-size: .8rem;
+    color: getColor(font-orange);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: .3rem;
+  }
+
+  .results-author {
+    font-size: .5rem;
+    color: getColor(font-grey);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
