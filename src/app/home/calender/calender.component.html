@@ -1,5 +1,61 @@
 <div id="calender-container">
-  <p>
-    calender works!
-  </p>
+  <ngb-datepicker id="date-picker" #dp [(ngModel)]="model" (navigate)="date = $event.next" (click)="onDatepickerClick($event)" [outsideDays]="'hidden'" [navigation]="'arrows'"></ngb-datepicker>
+
+  <div class="flex-container">
+
+    <div class="sub-column">
+      <div class="heading-container">
+        <h2 class="heading">Shopping List</h2>
+      </div>
+      <ul class="sub-list">
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+        <app-shopping-item></app-shopping-item>
+      </ul>
+    </div>
+
+    <div class="sub-column">
+      <div class="heading-container">
+        <h2 class="heading">{{getSelectedDate() | date:'MMM dd'}} Recipes</h2>
+      </div>
+      <ul class="sub-list">
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        <app-recipe-item></app-recipe-item>
+        </ul>
+    </div>
+
+  </div>
 </div>

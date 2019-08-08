@@ -78,8 +78,10 @@
 }
 
 .result-container {
-
   background-color: getColor(elem-background-light);
+  height: calc(100% - 8.5rem);
+  overflow-y: scroll;
+  margin-top: $elem-margin;
 
   .results-list {
     padding: 0;

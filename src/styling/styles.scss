@@ -52,7 +52,7 @@
   }
 
   i {
-    height: 100%;
+    //height: 100%;
     width: 100%;
     transition: all .3s;
   }
@@ -96,5 +96,92 @@
     font-size: 1.0rem;
     padding: .2rem .7rem;
     text-decoration: none;
+  }
+}
+
+#date-picker {
+  width: 100%;
+  height: 12rem;
+
+  div.ngb-dp-header {
+    background-color: getColor(elem-background-light);
+
+    ngb-datepicker-navigation {
+      .ngb-dp-arrow > button {
+
+        cursor: pointer;
+        border-radius: $elem-border-radius;
+
+        span {
+          font-size: 1rem;
+        }
+
+        &:hover {
+          background-color: getColor(button-background-hover);
+        }
+      }
+
+      .ngb-dp-month-name {
+        font-weight: 500;
+        background-color: inherit;
+      }
+    }
+  }
+
+  div.ngb-dp-months {
+    background-color: getColor(elem-background-light);
+
+    div.ngb-dp-month {
+      width: 100%;
+
+      ngb-datepicker-month-view > div.ngb-dp-week.ngb-dp-weekdays {
+        padding-bottom: .9rem;
+      }
+
+      ngb-datepicker-month-view > div.ngb-dp-week {
+        padding-bottom: .3rem;
+        cursor: default;
+        display: flex;
+
+        .ngb-dp-day {
+          flex-grow: 1;
+          display: grid;
+          height: 1rem;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .ngb-dp-weekday {
+          font-size: .7rem;
+          height: 1rem;
+          width: 100%;
+          flex-grow: 1;
+          align-self: center;
+          font-weight: 600;
+        }
+
+        .ngb-dp-day > .btn-light {
+          font-size: .7rem;
+          height: 1.2rem;
+          width: 100%;
+          flex-grow: 1;
+          align-self: center;
+          line-height: 1.4rem;
+          font-weight: 600;
+
+          &:hover {
+            background-color: getColor(button-background-hover);
+          }
+
+          &.rm-selected {
+            border: none;
+            outline: none;
+            background: getColor(background);
+          }
+        }
+      }
+    }
   }
 }
