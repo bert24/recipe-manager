@@ -1,0 +1,30 @@
+// COLORS
+$background: linear-gradient(to right bottom, #fbb26c, #f46052) no-repeat;
+$elem-background: #e5e5e5;
+$elem-background-light-1: lighten(#e5e5e5, 5%);
+$elem-background-light-2: lighten(#e5e5e5, 10%);
+
+$button-nav-bg-hover: darken(#e5e5e5, 10%);
+$button-nav-bg-active: darken(#e5e5e5, 30%);
+
+$search-button-bg: linear-gradient(to right bottom, #fbb26c, #f46052) no-repeat;
+$search-button-bg-hover: linear-gradient(to right bottom, darken(#fbb26c, 7%), darken(#f46052, 7%)) no-repeat;
+$search-button-bg-active: linear-gradient(to right bottom, darken(#fbb26c, 15%), darken(#f46052, 15%)) no-repeat;
+
+$border-light: F2EFEE;
+
+$font-white: white;
+$font-black: black;
+$font-grey: #968B87;
+$font-orange: #F59A83;
+$font-orange-dark: darken(#F59A83, 20%);
+
+// SIZES
+$header-height: 3rem;
+$searcher-width: 20vw;
+$details-width: 30vw;
+$header_height: 3rem;
+$elem-margin: 5px;
+$elem-border-radius: 10px;
+$min-screen-width: 1400px;
+$min-screen-height: 1000px;

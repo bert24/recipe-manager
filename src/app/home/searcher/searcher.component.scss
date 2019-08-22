@@ -1,24 +1,27 @@
-@import "vars";
+@import "abstracts/variables";
+@import "abstracts/mixins";
 
 :host {
   padding: $elem-margin;
   position: absolute;
-  top: calc(#{getSize(header-height)} + 2 * #{$elem-margin});
+  //top: calc(#{$header-height} + 2 * #{$elem-margin});
+  top: $header-height;
   left: 0;
-  width: getSize(searcher-width);
-  height: calc(100% - #{getSize(header-height)} - 4 * #{$elem-margin});
+  width: $searcher-width;
+  //height: calc(100% - #{$header-height} - 4 * #{$elem-margin});
+  height: calc(100% - #{$header-height});
 
   @include unscrollableScreenWidth {
     width: calc(#{$min-screen-width} * .2);
   }
 
   @include unscrollableScreenHeight {
-    height: calc(#{$min-screen-height} - #{$header_height} - 4 * #{$elem-margin});
+    height: calc(#{$min-screen-height} - #{$header_height});
   }
 }
 
 #search-container {
-  background: getColor(elem-background);
+  background: $elem-background;
   height: 100%;
   border-radius: $elem-border-radius;
   text-align: left;
@@ -33,7 +36,7 @@
       border-radius: $elem-border-radius;
       margin: $elem-margin;
       font-size: 1.0rem;
-      width: calc(100% - 2 * #{$elem-margin} - 1rem);
+      width: calc(100% - 2 * #{$elem-margin});
       height: 2rem;
       padding: 0 .5rem;
 
@@ -47,7 +50,7 @@
       width: calc(100% - 2 * #{$elem-margin});
       border: none;
       border-radius: $elem-border-radius;
-      background: getColor(search-button-background);
+      background: $search-button-bg;
       margin: 0;
       font-size: 1rem;
 
@@ -57,28 +60,28 @@
 
       &:hover {
         cursor: pointer;
-        background: getColor(search-button-background-hover);
+        background: $search-button-bg-hover;
       }
 
       &:active {
-        background: getColor(search-button-background-active);
+        background: $search-button-bg-active;
       }
 
       i {
         font-size: 1rem;
-        color: getColor(light-button-color);
+        color: $font-white;
       }
 
       span {
         font-size: 1rem;
-        color: getColor(light-button-color);
+        color: $font-white;
       }
     }
   }
 }
 
 .result-container {
-  background-color: getColor(elem-background-light);
+  background-color: $elem-background-light-1;
   height: calc(100% - 8.5rem);
   overflow-y: scroll;
   margin-top: $elem-margin;
@@ -91,16 +94,17 @@
 
 .pages-nav-container {
   position: absolute;
+  display: inline-block;
   bottom: calc(#{$elem-border-radius} + 1rem);
   left: 0;
   padding: 0 1rem;
-  width: calc(100% - 2rem);
+  width: 100%;
 
   .btn-inline {
-    color: getColor(font-orange);
-    background-color: getColor(light-button-color);
+    color: $font-orange;
+    background-color: $elem-background-light-1;
     border: none;
-    padding: .3rem .5rem;
+    padding: .3rem .1rem;
     border-radius: $elem-border-radius;
     cursor: pointer;
     display: flex;
@@ -118,8 +122,8 @@
 
     &:hover {
       transform: scale(1.05);
-      color: getColor(font-orange-dark);
-      background-color: getColor(light-button-color);
+      color: $font-orange-dark;
+      background-color: white;
     }
 
     &:active {

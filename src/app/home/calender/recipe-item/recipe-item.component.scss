@@ -1,4 +1,4 @@
-@import "vars";
+@import "abstracts/variables";
 
 .recipe-it {
   display: flex;
@@ -8,7 +8,7 @@
   text-decoration: none;
 
   &:hover {
-    background-color: getColor(search-item-hoover);
+    background-color: $elem-background-light-2;
     transform: translateY(-2px);
   }
 
@@ -34,7 +34,7 @@
 .recipe-data {
   .recipe-name {
     font-size: .8rem;
-    color: getColor(font-orange);
+    color: $font-orange;
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: .3rem;

@@ -1,20 +1,20 @@
-@import "vars";
+@import "abstracts/variables";
 
 .shopping-item {
   display: flex;
   align-items: flex-start;
   padding: .3rem 0;
-  border-bottom: 1px solid #F2EFEE;
+  border-bottom: 1px solid $border-light;
   position: relative;
 
   &:hover {
-    background-color: getColor(search-item-hoover);
+    background-color: $elem-background-light-2;
   }
 
   .shopping-count {
     flex: 0 0 30%;
     padding: .4rem .2rem;
-    border: 1px solid getColor(font-orange);
+    border: 1px solid $font-orange;
     border-radius: $elem-border-radius;
     margin-right: 1rem;
     cursor: default;
@@ -33,7 +33,7 @@
 
       &:focus {
         outline: none;
-        background-color: #F2EFEE;
+        background-color: $border-light;
       }
     }
 

@@ -1,0 +1,13 @@
+@import "abstracts/variables";
+
+@mixin unscrollableScreenWidth {
+  @media(max-width: #{$min-screen-width}) {
+    @content;
+  }
+}
+
+@mixin unscrollableScreenHeight {
+  @media(max-height: #{$min-screen-height}) {
+    @content;
+  }
+}

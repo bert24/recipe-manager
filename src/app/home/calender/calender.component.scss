@@ -1,28 +1,29 @@
-@import "vars";
+@import "abstracts/variables";
+@import "abstracts/mixins";
 
 :host {
   padding: $elem-margin;
   position: absolute;
-  top: calc(#{getSize(header-height)} + 2 * #{$elem-margin});
-  left: calc(#{getSize(searcher-width)} + #{getSize(details-width)} + 4 * #{$elem-margin});
-  width: calc(100% - #{getSize(searcher-width)} - #{getSize(details-width)} - 6 * #{$elem-margin});
-  height: calc(100% - #{getSize(header-height)} - 4 * #{$elem-margin});
+  top: $header-height;
+  left: calc(#{$searcher-width} + #{$details-width});
+  width: calc(100% - #{$searcher-width} - #{$details-width});
+  height: calc(100% - #{$header-height});
 
   @include unscrollableScreenHeight {
-    height: calc(#{$min-screen-height} - #{$header_height} - 4 * #{$elem-margin});
+    height: calc(#{$min-screen-height} - #{$header_height});
   }
 
   @include unscrollableScreenWidth {
-    left: calc(#{$min-screen-width} * .5 + 4 * #{$elem-margin});
-    width: calc(#{$min-screen-width} * .5 - 6 * #{$elem-margin});
+    left: calc(#{$min-screen-width} * .5);
+    width: calc(#{$min-screen-width} * .5 - 4 * #{$elem-margin});
   }
 }
 
 #calender-container {
-  padding: $elem-margin;
-  background: getColor(elem-background);
-  height: calc(100% - 2 * #{$elem-margin});
-  width: calc(100% - 2 * #{$elem-margin});
+  //margin: 0;
+  background: $elem-background;
+  height: 100%;
+  width: 100%;
   border-radius: $elem-border-radius;
 }
 
@@ -51,14 +52,14 @@
       .heading {
         align-self: center;
         cursor: default;
-        background: getColor(background);
+        background: $background;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
 
     .sub-list {
-      background-color: getColor(elem-background-light);
+      background-color: $elem-background-light-1;
       border-radius: $elem-border-radius;
       padding: 0;
       height: calc(100% - 2rem);

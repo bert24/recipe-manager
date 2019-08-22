@@ -1,20 +1,21 @@
-@import "vars";
+@import "abstracts/variables";
+@import "abstracts/mixins";
 
 :host {
   padding: $elem-margin;
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(100% - 2 * #{$elem-margin});
-  height: getSize(header-height);
+  width: 100%;
+  height: $header-height;
 
   @include unscrollableScreenWidth {
-    width: calc(#{$min-screen-width} - 2 * #{$elem-margin});
+    width: calc(#{$min-screen-width} - 4 * #{$elem-margin});
   }
 }
 
 #header-container {
-  background: getColor(elem-background);
+  background: $elem-background;
   width: 100%;
   height: 100%;
   border-radius: $elem-border-radius;
@@ -33,12 +34,12 @@
     .logo-span {
       align-self: center;
       cursor: default;
-      background: getColor(background);
+      background: $background;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
       i {
-        background: getColor(background);
+        background: $background;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -54,9 +55,10 @@
     .nav-button {
       height: 100%;
       border: none;
-      background: getColor(elem-background);
+      background: $elem-background;
       margin: 0;
       font-size: 1rem;
+      padding: 0 .5rem;
 
       i {
         font-size: 1rem;
@@ -68,22 +70,22 @@
 
       &:hover {
         cursor: pointer;
-        background-color: getColor(button-background-hover);
+        background-color: $button-nav-bg-hover;
       }
 
       &:active {
-        background-color: getColor(button-background-active);
-        color: getColor(elem-background);
+        background-color: $button-nav-bg-active;
+        color: $elem-background;
       }
     }
   }
 
   .prof-container {
-    height: getSize(header-height);
+    height: $header-height;
     padding: $elem-margin;
     margin-right: 1rem;
     display: grid;
-    grid-template-columns: auto 1rem calc(#{getSize(header-height)} * .8);
+    grid-template-columns: auto 1rem calc(#{$header-height} * .8);
     top: 0;
     right: 1rem;
 
@@ -110,6 +112,7 @@
       grid-column: 1;
       align-self: center;
       font-size: 1rem;
+      cursor: default;
     }
   }
 }
