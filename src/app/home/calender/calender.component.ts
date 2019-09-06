@@ -1,6 +1,4 @@
-/* tslint:disable */
-
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ViewRef } from '@angular/core';
 import { NgbDateStruct, NgbCalendar, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -13,7 +11,7 @@ export class CalenderComponent implements OnInit, AfterViewInit {
   model: NgbDateStruct;
   date: {year: number, month: number, day: number};
 
-  @ViewChild('dp', {static: false}) datePickerRef: ElementRef<any>;
+  @ViewChild('dp', {static: false}) datePickerRef: ViewRef;
 
   private dayColumnSelected: number;
   private dayRowSelected: number;
@@ -36,20 +34,24 @@ export class CalenderComponent implements OnInit, AfterViewInit {
   }
 
   onDatepickerClick(event: MouseEvent) {
-    if ((event.target.className === 'btn btn-link ngb-dp-arrow-btn' && event.target.parentElement.className === 'ngb-dp-arrow right') ||
-        (event.target.className === 'ngb-dp-navigation-chevron' && event.target.parentNode.parentElement.className === 'ngb-dp-arrow right')) {
+    if (((<HTMLButtonElement>event.target).className === 'btn btn-link ngb-dp-arrow-btn' &&
+        (<HTMLButtonElement>event.target).parentElement.className === 'ngb-dp-arrow right') ||
+        ((<HTMLSpanElement>event.target).className === 'ngb-dp-navigation-chevron' &&
+        (<HTMLSpanElement>event.target).parentNode.parentElement.className === 'ngb-dp-arrow right')) {
       this.monthCurr++;
       console.log(`month ++ | monthCurr: ${this.monthCurr} model.month: ${this.model.month}`);
       this.checkMonthToSelect();
 
-    } else if ((event.target.className === 'btn btn-link ngb-dp-arrow-btn' && event.target.parentElement.className === 'ngb-dp-arrow') ||
-        (event.target.className === 'ngb-dp-navigation-chevron' && event.target.parentNode.parentElement.className === 'ngb-dp-arrow')) {
+    } else if (((<HTMLButtonElement>event.target).className === 'btn btn-link ngb-dp-arrow-btn' &&
+        (<HTMLButtonElement>event.target).parentElement.className === 'ngb-dp-arrow') ||
+        ((<HTMLSpanElement>event.target).className === 'ngb-dp-navigation-chevron' &&
+        (<HTMLSpanElement>event.target).parentNode.parentElement.className === 'ngb-dp-arrow')) {
       this.monthCurr--;
       console.log(`month -- | monthCurr: ${this.monthCurr} model.month: ${this.model.month}`);
       this.checkMonthToSelect();
 
-    } else if (event.target.className === 'btn-light bg-primary text-white active' ||
-        event.target.className === 'btn-light active bg-primary text-white') {
+    } else if ((<HTMLDivElement>event.target).className === 'btn-light bg-primary text-white active' ||
+        (<HTMLDivElement>event.target).className === 'btn-light active bg-primary text-white') {
       const dayColumn = this.calendar.getWeekday(NgbDate.from(this.model));
       const dayRow = 1 + this.getWeekRow(this.model);
 
@@ -57,13 +59,13 @@ export class CalenderComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private getWeekRow(dateStruc: NgbDateStruct): number {
-    let firstDayOfMonth = new Date(dateStruc.year, dateStruc.month - 1, 1).getDay();
+  private getWeekRow(dateStruct: NgbDateStruct): number {
+    let firstDayOfMonth = new Date(dateStruct.year, dateStruct.month - 1, 1).getDay();
     firstDayOfMonth = firstDayOfMonth === 0 ? 7 : firstDayOfMonth;
 
     let index = 1;
     while (true) {
-      if (7 * index - firstDayOfMonth + 1 >= dateStruc.day) {
+      if (7 * index - firstDayOfMonth + 1 >= dateStruct.day) {
         return index;
       }
       index++;
@@ -71,14 +73,16 @@ export class CalenderComponent implements OnInit, AfterViewInit {
   }
 
   private selectDate(column: number, row: number): void {
+    // tslint:disable-next-line
+    const dayElemUnselector = `div.ngb-dp-months > div > ngb-datepicker-month-view > div:nth-child(${this.dayRowSelected}) > div:nth-child(${this.dayColumnSelected}) > div`;
+    const dayElemSelector = `div.ngb-dp-months > div > ngb-datepicker-month-view > div:nth-child(${row}) > div:nth-child(${column}) > div`;
+
     if (this.dayRowSelected && this.dayColumnSelected) {
-      this.datePickerRef._elementRef.nativeElement.querySelector(`div.ngb-dp-months > div > ngb-datepicker-month-view > 
-           div:nth-child(${this.dayRowSelected}) > div:nth-child(${this.dayColumnSelected}) > div`).classList.remove('rm-selected');
+      (<any>this.datePickerRef)._elementRef.nativeElement.querySelector(dayElemUnselector).classList.remove('rm-selected');
     }
 
     if (row && column) {
-      this.datePickerRef._elementRef.nativeElement.querySelector(`div.ngb-dp-months > div > ngb-datepicker-month-view > 
-           div:nth-child(${row}) > div:nth-child(${column}) > div`).classList.add('rm-selected');
+      (<any>this.datePickerRef)._elementRef.nativeElement.querySelector(dayElemSelector).classList.add('rm-selected');
     }
 
     this.dayRowSelected = row;
@@ -87,12 +91,13 @@ export class CalenderComponent implements OnInit, AfterViewInit {
   }
 
   private checkMonthToSelect() {
+    // tslint:disable-next-line
+    const dayElemSelector = `div.ngb-dp-months > div > ngb-datepicker-month-view > div:nth-child(${this.dayRowSelected}) > div:nth-child(${this.dayColumnSelected}) > div`;
+
     if (this.model.month === this.monthCurr) {
-      this.datePickerRef._elementRef.nativeElement.querySelector(`div.ngb-dp-months > div > ngb-datepicker-month-view > 
-           div:nth-child(${this.dayRowSelected}) > div:nth-child(${this.dayColumnSelected}) > div`).classList.add('rm-selected');
+      (<any>this.datePickerRef)._elementRef.nativeElement.querySelector(dayElemSelector).classList.add('rm-selected');
     } else {
-      this.datePickerRef._elementRef.nativeElement.querySelector(`div.ngb-dp-months > div > ngb-datepicker-month-view > 
-           div:nth-child(${this.dayRowSelected}) > div:nth-child(${this.dayColumnSelected}) > div`).classList.remove('rm-selected');
+      (<any>this.datePickerRef)._elementRef.nativeElement.querySelector(dayElemSelector).classList.remove('rm-selected');
     }
   }
 
