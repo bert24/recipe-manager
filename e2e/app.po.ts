@@ -5,7 +5,11 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getHeaderTitle() {
+    return element(by.id('logo-span')).getText();
+  }
+
+  getSearchFieldPh() {
+    return element(by.css('.search-field')).getAttribute('placeholder');
   }
 }
